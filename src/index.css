@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --primary: #06b6d4;
+        --accent: #3b82f6;
+        --bg-main: #ffffff;
+        --text-main: #0f172a;
+        --text-muted: #475569;
+        --border-glass: rgba(0, 0, 0, 0.1);
+        --bg-glass: rgba(255, 255, 255, 0.7);
+        --bg-grid: rgba(15, 23, 42, 0.12);
+    }
+
+    .dark {
+        --bg-main: #020617;
+        --text-main: #f8fafc;
+        --text-muted: #94a3b8;
+        --border-glass: rgba(255, 255, 255, 0.1);
+        --bg-glass: rgba(255, 255, 255, 0.05);
+        --bg-grid: rgba(15, 23, 42, 0.5);
+    }
+
+    body {
+        background-color: var(--bg-main);
+        color: var(--text-main);
+        @apply font-sans transition-colors duration-500 selection:bg-primary/30;
+        background-image:
+            radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.05) 0%, transparent 50%),
+            linear-gradient(var(--bg-grid) 1px, transparent 1px),
+            linear-gradient(90deg, var(--bg-grid) 1px, transparent 1px);
+        background-size: 100% 100%, 40px 40px, 40px 40px;
+        background-attachment: fixed;
+    }
+
+    h1,
+    h2,
+    h3 {
+        @apply tracking-tighter;
+    }
+}
+
+@layer components {
+    .glass-morphism {
+        background: var(--bg-glass);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid var(--border-glass);
+        @apply shadow-2xl;
+        box-shadow: 0 0 50px -12px rgba(6, 182, 212, 0.1);
+    }
+
+    .glossy-panel {
+        background: linear-gradient(135deg, var(--bg-glass), transparent);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid var(--border-glass);
+        @apply relative overflow-hidden rounded-[2rem];
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    .glossy-panel::after {
+        content: '';
+        @apply absolute inset-0 bg-gradient-to-tr from-cyan-500/10 via-transparent to-blue-500/10 pointer-events-none;
+    }
+
+    .neon-text {
+        text-shadow: 0 0 10px rgba(6, 182, 212, 0.5), 0 0 20px rgba(6, 182, 212, 0.2);
+    }
+
+    .neon-border {
+        @apply border-cyan-500/30;
+        box-shadow: 0 0 15px -5px rgba(6, 182, 212, 0.4);
+    }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-main);
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-cyan-900/50 rounded-full hover:bg-cyan-600 transition-all;
+}
