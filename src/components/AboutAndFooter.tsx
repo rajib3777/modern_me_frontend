@@ -35,7 +35,6 @@ export const About = ({ data }: { data: any }) => {
                             <p>{data.bio}</p>
                             <div className="p-8 glossy-panel border-primary/30 bg-primary/5 mt-10 backdrop-blur-md">
                                 <p className="text-sm font-mono text-primary/80 dark:text-primary/80 uppercase tracking-widest leading-loose">
-                                    // ATS_OPTIMIZED_SUMMARY <br />
                                     {data.ats_summary}
                                 </p>
                             </div>
